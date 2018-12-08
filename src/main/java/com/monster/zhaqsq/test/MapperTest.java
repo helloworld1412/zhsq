@@ -1,3 +1,7 @@
+/*2018.12.7
+* 黄金峰
+* 测试*/
+
 package com.monster.zhaqsq.test;
 
 import com.monster.zhaqsq.bean.UserBasic;
@@ -19,17 +23,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 public class MapperTest {
 
-//    @Autowired
-//    UserBasicController userbasicController;
 
     @Autowired
     UserBasicService userbasicService;
 
     @Autowired
     UserBasicMapper userbasicMapper;
-
-//    @Autowired
-//    UserBasic userbasic;
 
 
     @Test

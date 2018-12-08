@@ -14,6 +14,8 @@
     <result column="user_messagelevel" jdbcType="CHAR" property="userMessagelevel" />
     <result column="user_point" jdbcType="INTEGER" property="userPoint" />
   </resultMap>
+
+  <!--个人信息-->
   <resultMap id="PersonalInfoResultMap" type="com.monster.zhaqsq.bean.UserBasic">
     <id column="uid" jdbcType="INTEGER" property="uid" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
@@ -21,6 +23,8 @@
     <result column="user_desp" jdbcType="VARCHAR" property="userDesp" />
     <result column="user_messagelevel" jdbcType="CHAR" property="userMessagelevel" />
   </resultMap>
+
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -83,11 +87,12 @@
     uid, user_name, user_password, user_phonenumber, user_dept, user_sex, user_desp, 
     user_namecheck, user_creditlevel, user_messagelevel, user_point
   </sql>
+
+
+  <!--个人信息字段-->
   <sql id="PersonalInfo_Column_List">
     uid, user_name, user_sex, user_desp, user_messagelevel
   </sql>
-
-
   <!-- 查询个人信息 -->
   <select id="selectPersonalInfoByExample" resultMap="PersonalInfoResultMap">
     select

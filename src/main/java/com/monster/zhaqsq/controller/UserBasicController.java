@@ -1,3 +1,6 @@
+/*2018.12.7
+* 黄金峰
+* 控制器 处理请求*/
 package com.monster.zhaqsq.controller;
 
 import com.monster.zhaqsq.bean.Msg;
@@ -18,6 +21,7 @@ public class UserBasicController {
     @Autowired
     UserBasicService userbasicService;
 
+    /*得到用户个人信息*/
     @RequestMapping("/users")
     @ResponseBody
     public List<UserBasic> getUserPersonalInfo(){
@@ -25,6 +29,7 @@ public class UserBasicController {
         return userpersonalinfo;
     }
 
+    /*保存更新后的数据*/
     @ResponseBody
     @RequestMapping(value = "/users/{uid}",method = RequestMethod.PUT)
     public Msg saveUser(UserBasic userbasic){
