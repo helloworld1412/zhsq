@@ -24,7 +24,7 @@ public class CallListController {
      * 批量删除：1-2-3
      * 单个删除：1
      *
-     * @param id
+     * @param ids
      * @return
      */
     @ResponseBody
@@ -67,7 +67,22 @@ public class CallListController {
      * 查询任务数据
      * @return
      */
+
     @RequestMapping("/calls")
+    @ResponseBody
+    public Msg getcallsWithJson(@RequestParam(value="pn",defaultValue = "1")Integer pn){
+        // 引入PageHelper分页插件
+        // 在查询之前只需要调用，传入页码，以及每页的大小
+        PageHelper.startPage(pn,5);
+        // startPage后面紧跟的这个查询就是一个分页查询
+        List<CallList> calls = calllistService.getAll();
+        // 使用pageInfo包装查询后的结果，只需要将pageInfo交给页面就行了。
+        // 封装了详细的分页信息,包括有我们查询出来的数据，传入连续显示的页数
+        PageInfo page = new PageInfo(calls,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    //@RequestMapping("/calls")
     public String getcalls(@RequestParam(value="pn",defaultValue = "1")Integer pn, Model model){
         // 引入PageHelper分页插件
         // 在查询之前只需要调用，传入页码，以及每页的大小
