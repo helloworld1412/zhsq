@@ -3,6 +3,30 @@ package com.monster.zhaqsq.bean;
 import java.util.Date;
 
 public class CallList {
+	
+	
+
+    public CallList() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CallList(Integer callId, Integer subId, Date subTime, Date endTime, String callTitle, String callDesp,
+			Integer callMoney, String callNow, Integer recId, String subName, String recName) {
+		super();
+		this.callId = callId;
+		this.subId = subId;
+		this.subTime = subTime;
+		this.endTime = endTime;
+		this.callTitle = callTitle;
+		this.callDesp = callDesp;
+		this.callMoney = callMoney;
+		this.callNow = callNow;
+		this.recId = recId;
+		this.subName = subName;
+		this.recName = recName;
+	}
+	
     private Integer callId;
 
     private Integer subId;

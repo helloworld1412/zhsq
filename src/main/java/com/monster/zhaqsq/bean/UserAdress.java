@@ -1,6 +1,21 @@
 package com.monster.zhaqsq.bean;
 
 public class UserAdress {
+	
+
+    public UserAdress() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserAdress(Integer id, Integer uid, String adress, String userName) {
+		super();
+		this.id = id;
+		this.uid = uid;
+		this.adress = adress;
+		this.userName = userName;
+	}
+	
     private Integer id;
 
     private Integer uid;

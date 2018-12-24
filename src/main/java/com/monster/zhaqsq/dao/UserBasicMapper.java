@@ -29,7 +29,6 @@ public interface UserBasicMapper {
 
 
 
-
     int updateByExampleSelective(@Param("record") UserBasic record, @Param("example") UserBasicExample example);
 
     int updateByExample(@Param("record") UserBasic record, @Param("example") UserBasicExample example);

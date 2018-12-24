@@ -19,6 +19,9 @@ public interface CallListMapper {
     List<CallList> selectByExample(CallListExample example);
 
     CallList selectByPrimaryKey(Integer callId);
+    
+    //更新接收人
+    int updateRec(@Param("recId")Integer recId, @Param("recName")String recName, @Param("callId")Integer callId);
 
     int updateByExampleSelective(@Param("record") CallList record, @Param("example") CallListExample example);
 

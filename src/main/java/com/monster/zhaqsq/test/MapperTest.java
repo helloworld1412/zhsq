@@ -1,14 +1,19 @@
-/*2018.12.7
-* 黄金峰
-* 测试*/
-
 package com.monster.zhaqsq.test;
 
+import com.monster.zhaqsq.bean.CallList;
+import com.monster.zhaqsq.bean.UserAdress;
 import com.monster.zhaqsq.bean.UserBasic;
 import com.monster.zhaqsq.bean.UserBasicExample;
 import com.monster.zhaqsq.controller.UserBasicController;
+import com.monster.zhaqsq.dao.CallListMapper;
+import com.monster.zhaqsq.dao.UserAdressMapper;
 import com.monster.zhaqsq.dao.UserBasicMapper;
+import com.monster.zhaqsq.service.CallListService;
+import com.monster.zhaqsq.service.UserAdressService;
 import com.monster.zhaqsq.service.UserBasicService;
+
+import java.util.Date;
+
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +26,21 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 
+
 public class MapperTest {
 
+
+	@Autowired
+	CallListService callListService;
+	
+	@Autowired
+	UserAdressService userAressService;
+	
+	@Autowired
+	CallListMapper callListMapper;
+	
+	@Autowired
+	UserAdressMapper userAdressMapper;
 
     @Autowired
     UserBasicService userbasicService;
@@ -31,18 +49,86 @@ public class MapperTest {
     UserBasicMapper userbasicMapper;
 
 
+    Date time= new java.sql.Date(new java.util.Date().getTime());
+	
+    
+    //-----------------------------------------------CallList------------------------------------------------
+	@Test
+	public void calupdaterec() {
+		/*修改接收人*/
+		callListService.changeRec(2, "asdf", 4);
+	}
+	
+	@Test
+    public void calinsert(){
+        /*新增记录*/
+        callListService.saveCal(new CallList(null, 2, time, time, "123", "asd", 12, "y", 5, "white", "whte"));
+    }
+
+    @Test
+    public void calupdate(){
+        /*修改任务信息*/
+        CallList callList=new CallList();
+        callList.setCallId(6);
+        callList.setEndTime(time);
+        callList.setCallDesp("qianga");
+        callList.setCallMoney(24);
+        callListService.updateCallList(callList);
+    }
+
+    @Test
+    public void calselect() {
+        /*查询任务信息*/
+        System.out.println(callListService.getinfo());
+    }
+
+    @Test
+    public void caldelete() {
+        /*删除记录*/
+    	callListService.deletCal(2);
+    }
+    
+    //-----------------------------UserAdress---------------------------------------------------------------
+    @Test
+    public void adinsert(){
+        /*新增地址*/
+    	userAressService.saveAd(new UserAdress(null, 5, "gwwgw", "whte"));
+    }
+
+    @Test
+    public void adupdate(){
+        /*修改地址*/
+        userAressService.updateAd("fsdfs", "whte");
+    }
+
+    @Test
+    public void adselect() {
+        /*查询地址*/
+        System.out.println(userAressService.getAd("white"));
+    }
+
+    @Test
+    public void addelete() {
+        /*删除地址*/
+    	userAressService.deleteAd("white");
+    }
+    
+
+    //-----------------------------------------------UserBasic------------------------------------------------------
     @Test
     public void insert(){
         /*新增记录*/
-        userbasicMapper.insertSelective(new UserBasic(null, "test", "12345", "123", null, null, null, null, null, null, null));
+        userbasicMapper.insertSelective(new UserBasic(null, "test111", "12345", "123", null, null, null, null, null, null, null));
     }
+
 
     @Test
     public void update(){
         /*修改个人信息*/
         UserBasic userbasic = new UserBasic();
-        userbasic.setUid(2);
-        userbasic.setUserName("test");
+        userbasic.setUid(7);
+        userbasic.setUserName("test123");
+        userbasic.setUserPassword("123456789");
         userbasic.setUserSex("男");
         userbasic.setUserDesp("描述");
         userbasic.setUserMessagelevel("1");
@@ -58,6 +144,6 @@ public class MapperTest {
     @Test
     public void delete() {
         /*删除记录*/
-        userbasicService.deleteuser(3);
+        userbasicService.deleteuser(7);
     }
 }

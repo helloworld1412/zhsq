@@ -24,7 +24,6 @@
     <result column="user_messagelevel" jdbcType="CHAR" property="userMessagelevel" />
   </resultMap>
 
-
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -88,7 +87,6 @@
     user_namecheck, user_creditlevel, user_messagelevel, user_point
   </sql>
 
-
   <!--个人信息字段-->
   <sql id="PersonalInfo_Column_List">
     uid, user_name, user_sex, user_desp, user_messagelevel
@@ -114,7 +112,6 @@
     from tbl_userbasic
     where uid = #{uid,jdbcType=INTEGER}
   </select>
-
 
   <select id="selectByExample" parameterType="com.monster.zhaqsq.bean.UserBasicExample" resultMap="BaseResultMap">
     select

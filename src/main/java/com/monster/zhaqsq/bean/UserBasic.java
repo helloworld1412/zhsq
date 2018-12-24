@@ -23,8 +23,6 @@ public class UserBasic {
 
     private Integer userPoint;
 
-
-
     /*封装UserBasic类*/
     public UserBasic() {
     }
@@ -42,8 +40,6 @@ public class UserBasic {
         this.userMessagelevel = userMessagelevel;
         this.userPoint = userPoint;
     }
-
-
 
     public Integer getUid() {
         return uid;

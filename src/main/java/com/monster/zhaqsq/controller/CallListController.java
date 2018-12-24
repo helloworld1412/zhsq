@@ -79,7 +79,7 @@ public class CallListController {
         // 使用pageInfo包装查询后的结果，只需要将pageInfo交给页面就行了。
         // 封装了详细的分页信息,包括有我们查询出来的数据，传入连续显示的页数
         PageInfo page = new PageInfo(calls,5);
-        return Msg.success().add("PageInfo",page);
+        return Msg.success().add("pageInfo",page);
     }
 
     //@RequestMapping("/calls")

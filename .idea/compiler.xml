@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="zhaqsq-master" />
+        <module name="ZHAQSQ" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="zhaqsq-master" target="1.7" />
+      <module name="ZHAQSQ" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

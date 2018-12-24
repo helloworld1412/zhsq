@@ -98,6 +98,33 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  
+  
+  <!-- 根据username查询 -->
+  <select id="selectWithUsername" resultMap="BaseResultMap">
+  	SELECT 
+  	<include refid="Base_Column_List" />
+  	FROM tbl_useradress 
+  	WHERE user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  
+  
+  
+  <!-- 根据username删除 -->
+  <delete id="deleteWithUsername">
+ 	 delete from tbl_useradress where user_name = #{userName,jdbcType=VARCHAR}
+  </delete>
+  
+  
+  
+  <!-- 只修改地址 -->
+  <update id="updateOnlyAdress">
+  update tbl_useradress 
+  	set adress = #{adress,jdbcType=VARCHAR}
+ 	where user_name = #{userName,jdbcType=VARCHAR};
+  </update>
+  
+  
   <insert id="insert" parameterType="com.monster.zhaqsq.bean.UserAdress">
     insert into tbl_useradress (id, uid, adress, 
       user_name)

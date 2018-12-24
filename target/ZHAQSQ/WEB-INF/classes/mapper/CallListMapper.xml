@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="com.monster.zhaqsq.bean.CallList">
     <id column="call_id" jdbcType="INTEGER" property="callId" />
     <result column="sub_id" jdbcType="INTEGER" property="subId" />
-    <result column="sub_time" jdbcType="TIME" property="subTime" />
-    <result column="end_time" jdbcType="TIME" property="endTime" />
+    <result column="sub_time" jdbcType="TIMESTAMP" property="subTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
     <result column="call_title" jdbcType="VARCHAR" property="callTitle" />
     <result column="call_desp" jdbcType="VARCHAR" property="callDesp" />
     <result column="call_money" jdbcType="INTEGER" property="callMoney" />
@@ -111,8 +111,8 @@
       end_time, call_title, call_desp, 
       call_money, call_now, rec_id, 
       sub_name, rec_name)
-    values (#{callId,jdbcType=INTEGER}, #{subId,jdbcType=INTEGER}, #{subTime,jdbcType=TIME}, 
-      #{endTime,jdbcType=TIME}, #{callTitle,jdbcType=VARCHAR}, #{callDesp,jdbcType=VARCHAR}, 
+    values (#{callId,jdbcType=INTEGER}, #{subId,jdbcType=INTEGER}, #{subTime,jdbcType=TIMESTAMP},
+      #{endTime,jdbcType=TIMESTAMP}, #{callTitle,jdbcType=VARCHAR}, #{callDesp,jdbcType=VARCHAR},
       #{callMoney,jdbcType=INTEGER}, #{callNow,jdbcType=CHAR}, #{recId,jdbcType=INTEGER}, 
       #{subName,jdbcType=VARCHAR}, #{recName,jdbcType=VARCHAR})
   </insert>
@@ -161,10 +161,10 @@
         #{subId,jdbcType=INTEGER},
       </if>
       <if test="subTime != null">
-        #{subTime,jdbcType=TIME},
+        #{subTime,jdbcType=TIMESTAMP},
       </if>
       <if test="endTime != null">
-        #{endTime,jdbcType=TIME},
+        #{endTime,jdbcType=TIMESTAMP},
       </if>
       <if test="callTitle != null">
         #{callTitle,jdbcType=VARCHAR},
@@ -205,10 +205,10 @@
         sub_id = #{record.subId,jdbcType=INTEGER},
       </if>
       <if test="record.subTime != null">
-        sub_time = #{record.subTime,jdbcType=TIME},
+        sub_time = #{record.subTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.endTime != null">
-        end_time = #{record.endTime,jdbcType=TIME},
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.callTitle != null">
         call_title = #{record.callTitle,jdbcType=VARCHAR},
@@ -240,8 +240,8 @@
     update tbl_calllist
     set call_id = #{record.callId,jdbcType=INTEGER},
       sub_id = #{record.subId,jdbcType=INTEGER},
-      sub_time = #{record.subTime,jdbcType=TIME},
-      end_time = #{record.endTime,jdbcType=TIME},
+      sub_time = #{record.subTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
       call_title = #{record.callTitle,jdbcType=VARCHAR},
       call_desp = #{record.callDesp,jdbcType=VARCHAR},
       call_money = #{record.callMoney,jdbcType=INTEGER},
@@ -253,6 +253,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
+  
+  <!-- 更新接收人-->
+  <update id="updateRec">
+  	update tbl_calllist
+  	set rec_id = #{recId,jdbcType=INTEGER},
+  	rec_name = #{recName,jdbcType=VARCHAR}
+  	where call_id = #{callId,jdbcType=INTEGER};
+  </update>
+  
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.monster.zhaqsq.bean.CallList">
     update tbl_calllist
     <set>
@@ -260,10 +271,10 @@
         sub_id = #{subId,jdbcType=INTEGER},
       </if>
       <if test="subTime != null">
-        sub_time = #{subTime,jdbcType=TIME},
+        sub_time = #{subTime,jdbcType=TIMESTAMP},
       </if>
       <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIME},
+        end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
       <if test="callTitle != null">
         call_title = #{callTitle,jdbcType=VARCHAR},
@@ -292,8 +303,8 @@
   <update id="updateByPrimaryKey" parameterType="com.monster.zhaqsq.bean.CallList">
     update tbl_calllist
     set sub_id = #{subId,jdbcType=INTEGER},
-      sub_time = #{subTime,jdbcType=TIME},
-      end_time = #{endTime,jdbcType=TIME},
+      sub_time = #{subTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
       call_title = #{callTitle,jdbcType=VARCHAR},
       call_desp = #{callDesp,jdbcType=VARCHAR},
       call_money = #{callMoney,jdbcType=INTEGER},

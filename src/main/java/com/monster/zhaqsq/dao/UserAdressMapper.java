@@ -12,6 +12,9 @@ public interface UserAdressMapper {
 
     int deleteByPrimaryKey(Integer id);
 
+    //根据username删除地址
+    int deleteWithUsername(String username);
+
     int insert(UserAdress record);
 
     int insertSelective(UserAdress record);
@@ -19,6 +22,13 @@ public interface UserAdressMapper {
     List<UserAdress> selectByExample(UserAdressExample example);
 
     UserAdress selectByPrimaryKey(Integer id);
+
+    
+    //根据username查找地址
+    UserAdress selectWithUsername(String userName);
+    
+    //只更新地址
+    int updateOnlyAdress(@Param("adress")String adress,@Param("userName") String userName);
 
     int updateByExampleSelective(@Param("record") UserAdress record, @Param("example") UserAdressExample example);
 

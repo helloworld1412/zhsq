@@ -12,14 +12,57 @@ import java.util.List;
 public class CallListService {
 
     @Autowired
-    CallListMapper calllistMapper;
+    CallListMapper callListMapper;
+
+
+	/*得到用户个人信息*/
+    public List<CallList> getinfo() {
+        List<CallList> list = callListMapper.selectByExample(null);
+        return list;
+    }
+
+	/*
+	 * 插入新任务
+	 */
+	public void saveCal(CallList callList) {
+		callListMapper.insert(callList);
+	}
+
+	/*
+	 * 提交人修改
+	 */
+	public void changeRec(Integer recId, String recName, Integer callId) {
+		callListMapper.updateRec(recId, recName, callId);
+	}
+
+	/*
+	 * 修改任务
+	 */
+	public void updateCallList(CallList callList) {
+		callListMapper.updateByPrimaryKeySelective(callList);
+	}
+
+	/*
+	 * 查询任务
+	 */
+	public CallList getCal(Integer callId) {
+		return callListMapper.selectByPrimaryKey(callId);
+	}
+
+	/*
+	 * 删除任务
+	 */
+	public void deletCal(Integer callId) {
+		callListMapper.deleteByPrimaryKey(callId);
+	}
+
 
     /**
      * 查询所有任务
      * @return
      */
     public List<CallList> getAll() {
-        return calllistMapper.selectByExample(null);
+        return callListMapper.selectByExample(null);
     }
 
     /**
@@ -27,7 +70,7 @@ public class CallListService {
      * @param calllist
      */
     public void saveCall(CallList calllist) {
-        calllistMapper.insertSelective(calllist);
+        callListMapper.insertSelective(calllist);
     }
 
     /**
@@ -36,7 +79,7 @@ public class CallListService {
      * @return
      */
     public CallList getCall(Integer id) {
-        CallList calllist = calllistMapper.selectByPrimaryKey(id);
+        CallList calllist = callListMapper.selectByPrimaryKey(id);
         return calllist;
     }
 
@@ -45,13 +88,13 @@ public class CallListService {
      * @param id
      */
     public void deleteCall(Integer id) {
-        calllistMapper.deleteByPrimaryKey(id);
+        callListMapper.deleteByPrimaryKey(id);
     }
 
     public void deleteBatch(List<Integer> ids) {
         CallListExample example = new CallListExample();
         CallListExample.Criteria criteria = example.createCriteria();
         criteria.andCallIdIn(ids);
-        calllistMapper.deleteByExample(example);
+        callListMapper.deleteByExample(example);
     }
 }
