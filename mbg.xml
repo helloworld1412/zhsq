@@ -43,7 +43,7 @@
         <!-- table指定每个表的生成策略 -->
         <table tableName="tbl_UserBasic" domainObjectName="UserBasic"></table>
         <table tableName="tbl_CallList" domainObjectName="CallList"></table>
-        <table tableName="tbl_UserAdress" domainObjectName="UserAdress"></table>
+        <table tableName="tbl_UserAddress" domainObjectName="UserAddress"></table>
 
     </context>
 </generatorConfiguration>

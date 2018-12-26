@@ -20,14 +20,10 @@ public interface UserBasicMapper {
 
     UserBasic selectByPrimaryKey(Integer uid);
 
-
-
     /*个人信息*/
     List<UserBasic> selectPersonalInfoByExample(UserBasicExample example);
 
     UserBasic selectPersonalInfoByPrimaryKey(Integer uid);
-
-
 
     int updateByExampleSelective(@Param("record") UserBasic record, @Param("example") UserBasicExample example);
 

@@ -5,14 +5,16 @@ import java.util.Date;
 public class CallList {
 	
 	
-
+	
+	
+	
     public CallList() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public CallList(Integer callId, Integer subId, Date subTime, Date endTime, String callTitle, String callDesp,
-			Integer callMoney, String callNow, Integer recId, String subName, String recName) {
+			Integer callMoney, String callNow, Integer recId, String subName, String recName, String callAddress) {
 		super();
 		this.callId = callId;
 		this.subId = subId;
@@ -25,9 +27,10 @@ public class CallList {
 		this.recId = recId;
 		this.subName = subName;
 		this.recName = recName;
+		this.callAddress = callAddress;
 	}
-	
-    private Integer callId;
+
+	private Integer callId;
 
     private Integer subId;
 
@@ -48,6 +51,8 @@ public class CallList {
     private String subName;
 
     private String recName;
+
+    private String callAddress;
 
     public Integer getCallId() {
         return callId;
@@ -135,5 +140,13 @@ public class CallList {
 
     public void setRecName(String recName) {
         this.recName = recName == null ? null : recName.trim();
+    }
+
+    public String getCallAddress() {
+        return callAddress;
+    }
+
+    public void setCallAddress(String callAddress) {
+        this.callAddress = callAddress == null ? null : callAddress.trim();
     }
 }

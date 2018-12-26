@@ -1,7 +1,35 @@
 package com.monster.zhaqsq.bean;
 
 public class UserBasic {
-    private Integer uid;
+	
+	
+	
+	
+	
+	
+    public UserBasic() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserBasic(Integer uid, String userName, String userPassword, String userPhonenumber, String userDept,
+			String userSex, String userDesp, String userNamecheck, Integer userCreditlevel, String userMessagelevel,
+			Integer userPoint) {
+		super();
+		this.uid = uid;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.userPhonenumber = userPhonenumber;
+		this.userDept = userDept;
+		this.userSex = userSex;
+		this.userDesp = userDesp;
+		this.userNamecheck = userNamecheck;
+		this.userCreditlevel = userCreditlevel;
+		this.userMessagelevel = userMessagelevel;
+		this.userPoint = userPoint;
+	}
+
+	private Integer uid;
 
     private String userName;
 
@@ -22,24 +50,6 @@ public class UserBasic {
     private String userMessagelevel;
 
     private Integer userPoint;
-
-    /*封装UserBasic类*/
-    public UserBasic() {
-    }
-
-    public UserBasic(Integer uid, String userName, String userPassword, String userPhonenumber, String userDept, String userSex, String userDesp, String userNamecheck, Integer userCreditlevel, String userMessagelevel, Integer userPoint) {
-        this.uid = uid;
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.userPhonenumber = userPhonenumber;
-        this.userDept = userDept;
-        this.userSex = userSex;
-        this.userDesp = userDesp;
-        this.userNamecheck = userNamecheck;
-        this.userCreditlevel = userCreditlevel;
-        this.userMessagelevel = userMessagelevel;
-        this.userPoint = userPoint;
-    }
 
     public Integer getUid() {
         return uid;
@@ -128,4 +138,6 @@ public class UserBasic {
     public void setUserPoint(Integer userPoint) {
         this.userPoint = userPoint;
     }
+
+
 }

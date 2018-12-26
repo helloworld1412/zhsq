@@ -2,7 +2,6 @@ package com.monster.zhaqsq.bean;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class CallListExample {
@@ -104,32 +103,6 @@ public class CallListExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
-            }
-            addCriterion(condition, timeList, property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andCallIdIsNull() {
@@ -263,52 +236,52 @@ public class CallListExample {
         }
 
         public Criteria andSubTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("sub_time =", value, "subTime");
+            addCriterion("sub_time =", value, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("sub_time <>", value, "subTime");
+            addCriterion("sub_time <>", value, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("sub_time >", value, "subTime");
+            addCriterion("sub_time >", value, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("sub_time >=", value, "subTime");
+            addCriterion("sub_time >=", value, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeLessThan(Date value) {
-            addCriterionForJDBCTime("sub_time <", value, "subTime");
+            addCriterion("sub_time <", value, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("sub_time <=", value, "subTime");
+            addCriterion("sub_time <=", value, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("sub_time in", values, "subTime");
+            addCriterion("sub_time in", values, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("sub_time not in", values, "subTime");
+            addCriterion("sub_time not in", values, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("sub_time between", value1, value2, "subTime");
+            addCriterion("sub_time between", value1, value2, "subTime");
             return (Criteria) this;
         }
 
         public Criteria andSubTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("sub_time not between", value1, value2, "subTime");
+            addCriterion("sub_time not between", value1, value2, "subTime");
             return (Criteria) this;
         }
 
@@ -323,52 +296,52 @@ public class CallListExample {
         }
 
         public Criteria andEndTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("end_time =", value, "endTime");
+            addCriterion("end_time =", value, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("end_time <>", value, "endTime");
+            addCriterion("end_time <>", value, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("end_time >", value, "endTime");
+            addCriterion("end_time >", value, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("end_time >=", value, "endTime");
+            addCriterion("end_time >=", value, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeLessThan(Date value) {
-            addCriterionForJDBCTime("end_time <", value, "endTime");
+            addCriterion("end_time <", value, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("end_time <=", value, "endTime");
+            addCriterion("end_time <=", value, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("end_time in", values, "endTime");
+            addCriterion("end_time in", values, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("end_time not in", values, "endTime");
+            addCriterion("end_time not in", values, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("end_time between", value1, value2, "endTime");
+            addCriterion("end_time between", value1, value2, "endTime");
             return (Criteria) this;
         }
 
         public Criteria andEndTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("end_time not between", value1, value2, "endTime");
+            addCriterion("end_time not between", value1, value2, "endTime");
             return (Criteria) this;
         }
 
@@ -839,6 +812,76 @@ public class CallListExample {
 
         public Criteria andRecNameNotBetween(String value1, String value2) {
             addCriterion("rec_name not between", value1, value2, "recName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressIsNull() {
+            addCriterion("call_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressIsNotNull() {
+            addCriterion("call_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressEqualTo(String value) {
+            addCriterion("call_address =", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressNotEqualTo(String value) {
+            addCriterion("call_address <>", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressGreaterThan(String value) {
+            addCriterion("call_address >", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("call_address >=", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressLessThan(String value) {
+            addCriterion("call_address <", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressLessThanOrEqualTo(String value) {
+            addCriterion("call_address <=", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressLike(String value) {
+            addCriterion("call_address like", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressNotLike(String value) {
+            addCriterion("call_address not like", value, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressIn(List<String> values) {
+            addCriterion("call_address in", values, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressNotIn(List<String> values) {
+            addCriterion("call_address not in", values, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressBetween(String value1, String value2) {
+            addCriterion("call_address between", value1, value2, "callAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCallAddressNotBetween(String value1, String value2) {
+            addCriterion("call_address not between", value1, value2, "callAddress");
             return (Criteria) this;
         }
     }

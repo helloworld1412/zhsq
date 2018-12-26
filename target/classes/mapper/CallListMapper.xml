@@ -13,6 +13,7 @@
     <result column="rec_id" jdbcType="INTEGER" property="recId" />
     <result column="sub_name" jdbcType="VARCHAR" property="subName" />
     <result column="rec_name" jdbcType="VARCHAR" property="recName" />
+    <result column="call_address" jdbcType="VARCHAR" property="callAddress" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     call_id, sub_id, sub_time, end_time, call_title, call_desp, call_money, call_now, 
-    rec_id, sub_name, rec_name
+    rec_id, sub_name, rec_name, call_address
   </sql>
   <select id="selectByExample" parameterType="com.monster.zhaqsq.bean.CallListExample" resultMap="BaseResultMap">
     select
@@ -110,11 +111,13 @@
     insert into tbl_calllist (call_id, sub_id, sub_time, 
       end_time, call_title, call_desp, 
       call_money, call_now, rec_id, 
-      sub_name, rec_name)
-    values (#{callId,jdbcType=INTEGER}, #{subId,jdbcType=INTEGER}, #{subTime,jdbcType=TIMESTAMP},
-      #{endTime,jdbcType=TIMESTAMP}, #{callTitle,jdbcType=VARCHAR}, #{callDesp,jdbcType=VARCHAR},
+      sub_name, rec_name, call_address
+      )
+    values (#{callId,jdbcType=INTEGER}, #{subId,jdbcType=INTEGER}, #{subTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{callTitle,jdbcType=VARCHAR}, #{callDesp,jdbcType=VARCHAR}, 
       #{callMoney,jdbcType=INTEGER}, #{callNow,jdbcType=CHAR}, #{recId,jdbcType=INTEGER}, 
-      #{subName,jdbcType=VARCHAR}, #{recName,jdbcType=VARCHAR})
+      #{subName,jdbcType=VARCHAR}, #{recName,jdbcType=VARCHAR}, #{callAddress,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.monster.zhaqsq.bean.CallList">
     insert into tbl_calllist
@@ -152,6 +155,9 @@
       <if test="recName != null">
         rec_name,
       </if>
+      <if test="callAddress != null">
+        call_address,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="callId != null">
@@ -186,6 +192,9 @@
       </if>
       <if test="recName != null">
         #{recName,jdbcType=VARCHAR},
+      </if>
+      <if test="callAddress != null">
+        #{callAddress,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -231,11 +240,24 @@
       <if test="record.recName != null">
         rec_name = #{record.recName,jdbcType=VARCHAR},
       </if>
+      <if test="record.callAddress != null">
+        call_address = #{record.callAddress,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
+    
+  <!-- 更新接收人-->
+  <update id="updateRec">
+  	update tbl_calllist
+  	set rec_id = #{recId,jdbcType=INTEGER},
+  	rec_name = #{recName,jdbcType=VARCHAR}
+  	where call_id = #{callId,jdbcType=INTEGER};
+  </update>
+  
   <update id="updateByExample" parameterType="map">
     update tbl_calllist
     set call_id = #{record.callId,jdbcType=INTEGER},
@@ -248,22 +270,12 @@
       call_now = #{record.callNow,jdbcType=CHAR},
       rec_id = #{record.recId,jdbcType=INTEGER},
       sub_name = #{record.subName,jdbcType=VARCHAR},
-      rec_name = #{record.recName,jdbcType=VARCHAR}
+      rec_name = #{record.recName,jdbcType=VARCHAR},
+      call_address = #{record.callAddress,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  
-  
-  <!-- 更新接收人-->
-  <update id="updateRec">
-  	update tbl_calllist
-  	set rec_id = #{recId,jdbcType=INTEGER},
-  	rec_name = #{recName,jdbcType=VARCHAR}
-  	where call_id = #{callId,jdbcType=INTEGER};
-  </update>
-  
-  
   <update id="updateByPrimaryKeySelective" parameterType="com.monster.zhaqsq.bean.CallList">
     update tbl_calllist
     <set>
@@ -297,6 +309,9 @@
       <if test="recName != null">
         rec_name = #{recName,jdbcType=VARCHAR},
       </if>
+      <if test="callAddress != null">
+        call_address = #{callAddress,jdbcType=VARCHAR},
+      </if>
     </set>
     where call_id = #{callId,jdbcType=INTEGER}
   </update>
@@ -311,7 +326,8 @@
       call_now = #{callNow,jdbcType=CHAR},
       rec_id = #{recId,jdbcType=INTEGER},
       sub_name = #{subName,jdbcType=VARCHAR},
-      rec_name = #{recName,jdbcType=VARCHAR}
+      rec_name = #{recName,jdbcType=VARCHAR},
+      call_address = #{callAddress,jdbcType=VARCHAR}
     where call_id = #{callId,jdbcType=INTEGER}
   </update>
-</mapper>
+ </mapper>

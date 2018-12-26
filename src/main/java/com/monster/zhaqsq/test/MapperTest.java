@@ -1,15 +1,13 @@
 package com.monster.zhaqsq.test;
 
 import com.monster.zhaqsq.bean.CallList;
-import com.monster.zhaqsq.bean.UserAdress;
+import com.monster.zhaqsq.bean.UserAddress;
 import com.monster.zhaqsq.bean.UserBasic;
-import com.monster.zhaqsq.bean.UserBasicExample;
-import com.monster.zhaqsq.controller.UserBasicController;
 import com.monster.zhaqsq.dao.CallListMapper;
-import com.monster.zhaqsq.dao.UserAdressMapper;
+import com.monster.zhaqsq.dao.UserAddressMapper;
 import com.monster.zhaqsq.dao.UserBasicMapper;
 import com.monster.zhaqsq.service.CallListService;
-import com.monster.zhaqsq.service.UserAdressService;
+import com.monster.zhaqsq.service.UserAddressService;
 import com.monster.zhaqsq.service.UserBasicService;
 
 import java.util.Date;
@@ -34,13 +32,13 @@ public class MapperTest {
 	CallListService callListService;
 	
 	@Autowired
-	UserAdressService userAressService;
+	UserAddressService userAressService;
 	
 	@Autowired
 	CallListMapper callListMapper;
 	
 	@Autowired
-	UserAdressMapper userAdressMapper;
+	UserAddressMapper userAddressMapper;
 
     @Autowired
     UserBasicService userbasicService;
@@ -62,7 +60,7 @@ public class MapperTest {
 	@Test
     public void calinsert(){
         /*新增记录*/
-        callListService.saveCal(new CallList(null, 2, time, time, "123", "asd", 12, "y", 5, "white", "whte"));
+        callListService.saveCal(new CallList(null, 2, time, time, "123", "asd", 12, "y", 5, "white", "whte","ads"));
     }
 
     @Test
@@ -88,11 +86,11 @@ public class MapperTest {
     	callListService.deletCal(2);
     }
     
-    //-----------------------------UserAdress---------------------------------------------------------------
+    //-----------------------------UserAddress---------------------------------------------------------------
     @Test
     public void adinsert(){
         /*新增地址*/
-    	userAressService.saveAd(new UserAdress(null, 5, "gwwgw", "whte"));
+    	userAressService.saveAd(new UserAddress(null, 5, "gwwgw", "whte"));
     }
 
     @Test

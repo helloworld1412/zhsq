@@ -21,7 +21,7 @@
         <!-- 数据源，事务控制，xxx -->
         <context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
         <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-            <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mysql.zhaqsq?useSSL=true&amp;characterEncoding=gbk"></property>
+            <property name="jdbcUrl" value="jdbc:mysql://192.168.0.111:3306/mysql.zhaqsq?useSSL=true&amp;characterEncoding=gbk"></property>
             <property name="driverClass" value="${jdbc.driverClass}"></property>
             <property name="user" value="${jdbc.user}"></property>
             <property name="password" value="${jdbc.password}"></property>

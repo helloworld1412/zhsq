@@ -1,26 +1,31 @@
 package com.monster.zhaqsq.bean;
 
-public class UserAdress {
+public class UserAddress {
 	
-
-    public UserAdress() {
+	
+	
+	
+	
+	
+	
+    public UserAddress() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserAdress(Integer id, Integer uid, String adress, String userName) {
+	public UserAddress(Integer id, Integer uid, String address, String userName) {
 		super();
 		this.id = id;
 		this.uid = uid;
-		this.adress = adress;
+		this.address = address;
 		this.userName = userName;
 	}
-	
-    private Integer id;
+
+	private Integer id;
 
     private Integer uid;
 
-    private String adress;
+    private String address;
 
     private String userName;
 
@@ -40,12 +45,12 @@ public class UserAdress {
         this.uid = uid;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress == null ? null : adress.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
     public String getUserName() {

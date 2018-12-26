@@ -61,6 +61,7 @@
                     <th>截止时间</th>
                     <th>发布人</th>
                     <th>任务描述</th>
+                    <th>任务地点</th>
                     <th>任务状态</th>
                     <th>操作</th>
                 </tr>
@@ -135,6 +136,7 @@
             var endTimeTd = $("<td></td>").append(timestampToTime(item.endTime/1000));
             var subNameTd = $("<td></td>").append(item.subName);
             var callDespTd = $("<td></td>").append(item.callDesp);
+            var callAddressTd = $("<td></td>").append(item.callAddress);
             var callNowTd = $("<td></td>").append(item.callNow);
             /**
              <button class="">
@@ -161,6 +163,7 @@
                 .append(endTimeTd)
                 .append(subNameTd)
                 .append(callDespTd)
+                .append(callAddressTd)
                 .append(callNowTd)
                 .append(btnTd)
                 .appendTo("#calls_table tbody");
