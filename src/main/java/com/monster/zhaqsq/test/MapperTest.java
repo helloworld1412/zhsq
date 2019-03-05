@@ -1,12 +1,15 @@
 package com.monster.zhaqsq.test;
 
 import com.monster.zhaqsq.bean.CallList;
+import com.monster.zhaqsq.bean.CommunityBasic;
 import com.monster.zhaqsq.bean.UserAddress;
 import com.monster.zhaqsq.bean.UserBasic;
 import com.monster.zhaqsq.dao.CallListMapper;
+import com.monster.zhaqsq.dao.CommunityBasicMapper;
 import com.monster.zhaqsq.dao.UserAddressMapper;
 import com.monster.zhaqsq.dao.UserBasicMapper;
 import com.monster.zhaqsq.service.CallListService;
+import com.monster.zhaqsq.service.CommunityBasicService;
 import com.monster.zhaqsq.service.UserAddressService;
 import com.monster.zhaqsq.service.UserBasicService;
 
@@ -45,6 +48,12 @@ public class MapperTest {
 
     @Autowired
     UserBasicMapper userbasicMapper;
+
+    @Autowired
+    CommunityBasicService communityBasicService;
+
+    @Autowired
+    CommunityBasicMapper communityBasicMapper;
 
 
     Date time= new java.sql.Date(new java.util.Date().getTime());
@@ -143,5 +152,35 @@ public class MapperTest {
     public void delete() {
         /*删除记录*/
         userbasicService.deleteuser(7);
+    }
+
+    //----------------------------------------------CommunityBasic------------------------------------------------------------
+    @Test
+    public void coinsert(){
+        /*新增社区*/
+        communityBasicService.saveCom(new CommunityBasic(null, "dadfs", "xx", 12, "adas", "fadf", null));
+    }
+
+    @Test
+    public void coupdate(){
+        /*修改社区*/
+        CommunityBasic communityBasic = new CommunityBasic();
+        communityBasic.setComId(1);
+        communityBasic.setComCategory("sq");
+        communityBasic.setComDesp("fggas");
+        communityBasic.setComNumber(42);
+        communityBasicService.updateCommunityWithoutPicture(communityBasic);
+    }
+
+    @Test
+    public void coselect() {
+        /*查询社区*/
+        System.out.println(communityBasicService.getCom("dadfs"));
+    }
+
+    @Test
+    public void codelete() {
+        /*删除社区*/
+        communityBasicService.deletCom(3);
     }
 }
