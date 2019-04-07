@@ -108,7 +108,7 @@
 
     function to_page(pn){
         $.ajax({
-            url:"${APP_PATH}/calls",
+            url:"${APP_PATH}/call/calls",
             data:"pn="+pn,
             type:"GET",
             success:function(result){

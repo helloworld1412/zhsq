@@ -60,10 +60,15 @@ public class CommunityBasicController {
     }
 
 
-    /**暂时不会
-     *
+    /**
      * 修改社区更新图片
      */
+    @RequestMapping(value = "/updatepic/{callId}",method = RequestMethod.PUT)
+    @ResponseBody
+    public Msg updateComWithPic(CommunityBasic communityBasic){
+        communitybasicService.updateCommunityWithPicture(communityBasic);
+        return Msg.success();
+    }
 
     /**
      * 删除社区

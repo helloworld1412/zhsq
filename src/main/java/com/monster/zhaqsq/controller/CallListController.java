@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/call")
 public class CallListController {
 
     @Autowired
@@ -28,7 +29,7 @@ public class CallListController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/call/{ids}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{ids}",method = RequestMethod.DELETE)
     public Msg deleteCall(@PathVariable("ids")String ids){
         if (ids.contains("-")){
             List<Integer> del_ids =new ArrayList<>();
@@ -45,7 +46,20 @@ public class CallListController {
         return Msg.success();
     }
 
-    @RequestMapping(value = "/call/{id}",method = RequestMethod.GET)
+    /**
+     * 保存更新后的数据
+     */
+    @ResponseBody
+    @RequestMapping(value="/update/{callId}",method = RequestMethod.PUT)
+    public Msg updateCall(CallList callList){
+        calllistService.updateCallList(callList);
+        return Msg.success();
+    }
+
+    /**
+     * 获取任务信息
+     */
+    @RequestMapping(value = "/get/{id}",method = RequestMethod.GET)
     @ResponseBody
     public Msg getCall(@PathVariable("id")Integer id){
         CallList calllist = calllistService.getCall(id);
@@ -56,7 +70,7 @@ public class CallListController {
      * 任务保存
      * @return
      */
-    @RequestMapping(value = "/call",method = RequestMethod.POST)
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
     @ResponseBody
     public Msg saveCall(CallList calllist){
         calllistService.saveCall(calllist);
