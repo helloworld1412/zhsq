@@ -122,6 +122,15 @@
       order by ${orderByClause}
     </if>
   </select>
+  
+  <!-- 根据username查询 -->
+  <select id="selectByUserName" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_userbasic
+    where user_Name = #{userName,jdbcType=VARCHAR}
+  </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

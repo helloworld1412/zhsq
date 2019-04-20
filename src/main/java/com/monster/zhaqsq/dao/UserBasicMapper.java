@@ -19,6 +19,8 @@ public interface UserBasicMapper {
     List<UserBasic> selectByExample(UserBasicExample example);
 
     UserBasic selectByPrimaryKey(Integer uid);
+    
+    UserBasic selectByUserName(@Param("userName") String userName);
 
     /*个人信息*/
     List<UserBasic> selectPersonalInfoByExample(UserBasicExample example);

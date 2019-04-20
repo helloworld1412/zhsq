@@ -28,6 +28,14 @@ public class UserBasicService {
         List<UserBasic> userpiList = userbasicMapper.selectPersonalInfoByExample(null);
         return userpiList;
     }
+    
+    
+    /**
+     * 根据username查询
+     */
+    public UserBasic getWithUserName(String userName) {
+    	return userbasicMapper.selectByUserName(userName);
+    }
 
     /**
      * 更新用户信息

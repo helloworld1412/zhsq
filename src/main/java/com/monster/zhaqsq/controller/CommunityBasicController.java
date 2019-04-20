@@ -45,6 +45,13 @@ public class CommunityBasicController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ResponseBody
     public Msg saveCom(CommunityBasic communityBasic){
+    	List<CommunityBasic> communities = communitybasicService.getall();
+    	for(CommunityBasic community:communities)
+    	{
+    		if (community.getComTitle().equals(communityBasic.getComTitle())){
+                return Msg.fail();
+            }
+    	}
         communitybasicService.saveCom(communityBasic);
         return Msg.success();
     }

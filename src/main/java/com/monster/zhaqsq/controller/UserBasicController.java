@@ -3,11 +3,13 @@ package com.monster.zhaqsq.controller;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.monster.zhaqsq.bean.CallList;
 import com.monster.zhaqsq.bean.Msg;
 import com.monster.zhaqsq.bean.UserBasic;
 import com.monster.zhaqsq.service.UserBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +35,26 @@ public class UserBasicController {
         return userpersonalinfo;
     }
 
+    /**
+     * 获取用户个人信息
+     */
+    @RequestMapping("/all")
+    @ResponseBody
+    public List<UserBasic> getUserPersonalAllInfo(){
+        List<UserBasic> userpersonalinfo = userbasicService.getall();
+        return userpersonalinfo;
+    }
+    
+    /**
+     * 根据Username获取任务信息
+     */
+    @RequestMapping(value = "/get",method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getCall(@RequestParam("userName")String userName){
+    	UserBasic userBasic = userbasicService.getWithUserName(userName);
+        return Msg.success().add("user",userBasic);
+    }
+    
     /**
      * 保存更新后的数据
      */
@@ -67,6 +89,12 @@ public class UserBasicController {
     public Msg register(@RequestParam("userName")String userName,
                         @RequestParam("userPassword")String userPassword,
                         @RequestParam("userPhonenumber")String userPhonenumber){
+    	List<UserBasic> userList = userbasicService.getall();
+        for (UserBasic user:userList){
+            if (user.getUserName().equals(userName) || user.getUserPhonenumber().equals(userPhonenumber)){
+                return Msg.fail();
+            }
+        }
         userbasicService.register(userName, userPassword,userPhonenumber);
         return Msg.success();
     }
